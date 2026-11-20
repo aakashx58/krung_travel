@@ -2,6 +2,8 @@
 
 Krung Travel is a React single-page application built with **Vite**, **TypeScript**, and **Tailwind CSS**. It surfaces hand-picked Bangkok accommodations with search, property detail views, and AI-powered features backed by the **Google Generative AI SDK** (`@google/genai`).
 
+<img width="1898" height="890" alt="image" src="https://github.com/user-attachments/assets/ef4d457d-e920-4fab-8b15-f0eb31a49122" />
+
 ## Tech Stack
 
 | Layer | Technology |
