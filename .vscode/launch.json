@@ -1,0 +1,69 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Chrome against localhost (Vite dev server)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/src/*"
+      },
+      "trace": true,
+      "preLaunchTask": "npm: dev",
+      "postDebugTask": "terminate",
+      "timeout": 60000
+    },
+    {
+      "name": "Attach to Chrome (dev server already running)",
+      "type": "chrome",
+      "request": "attach",
+      "url": "http://localhost:3000",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}",
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/src/*"
+      }
+    },
+    {
+      "name": "Debug Vite dev server (Node)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/node_modules/vite/bin/vite.js",
+      "args": ["--port=3000", "--host=0.0.0.0"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "NODE_OPTIONS": "--no-warnings"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+    {
+      "name": "Preview production build",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4173",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "npm: preview",
+      "postDebugTask": "terminate",
+      "timeout": 60000
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Dev Server + Chrome",
+      "configurations": [
+        "Launch Chrome against localhost (Vite dev server)"
+      ],
+      "preLaunchTask": "npm: dev",
+      "postDebugTask": "terminate",
+      "stopAll": true
+    }
+  ]
+}

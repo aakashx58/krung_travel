@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+:root {
+  --peach: #f7d9c6;
+  --peach-mid: #fbe7da;
+  --peach-light: #fdf0e7;
+  --ink: #1d1a1c;
+  --muted-ink: #5c5156;
+  --light-muted: #8a7f83;
+  --orange: #f39419;
+  --star-yellow: #f7c325;
+  --heart-red: #ff4d5e;
+  --ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background-color: #f7d9c6;
+  scroll-behavior: smooth;
+  font-family: "Urbanist", sans-serif;
+  color: #1d1a1c;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f7d9c6;
+  font-family: "Urbanist", sans-serif;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
+.page-gradient {
+  background: linear-gradient(
+    180deg,
+    #f7d9c6 0%,
+    #f7d9c6 115vh,
+    #fbe7da 175vh,
+    #fdf0e7 100%
+  );
+  min-height: 100vh;
+}
+
+.font-gilda {
+  font-family: "Gilda Display", Georgia, serif;
+}
+
+.font-urbanist {
+  font-family: "Urbanist", sans-serif;
+}
+
+/* Nav link underline wipe: enters from left, exits to right */
+.nav-link-wipe {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px;
+}
+
+.nav-link-wipe::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.5px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.34s var(--ease);
+}
+
+.nav-link-wipe:hover::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Giant hero frosted gradient text */
+.hero-title-word {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.97) 0%,
+    rgba(255, 255, 255, 0.86) 36%,
+    rgba(255, 255, 255, 0.16) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  will-change: transform;
+}
+
+/* Cloud drifting animations */
+@keyframes cloudDriftFront {
+  0% {
+    transform: translate3d(-2.5%, 0, 0);
+  }
+  100% {
+    transform: translate3d(2.5%, 0, 0);
+  }
+}
+
+@keyframes cloudDriftBack {
+  0% {
+    transform: scaleX(-1) translate3d(-3%, -2%, 0);
+  }
+  100% {
+    transform: scaleX(-1) translate3d(3%, 2%, 0);
+  }
+}
+
+.cloud-front {
+  animation: cloudDriftFront 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.cloud-back {
+  animation: cloudDriftBack 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Popover drop in */
+@keyframes popoverIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popover-drop {
+  animation: popoverIn 0.25s var(--out) forwards;
+}
+
+/* Heart pop animation */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-pop {
+  animation: heartPop 0.36s var(--out);
+}
+
+/* Detail stagger reveal */
+@keyframes detailRise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-rise {
+  opacity: 0;
+  animation: detailRise 0.65s var(--out) forwards;
+}
+
+/* Card hover photo zoom */
+.stay-card:hover .stay-card-photo {
+  transform: scale(1.07);
+}
+
+.stay-card-photo {
+  transition: transform 1.2s var(--out);
+}
+
+.stay-card {
+  transition:
+    transform 0.45s var(--out),
+    box-shadow 0.45s var(--out),
+    opacity 0.7s var(--out);
+}
+
+.stay-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 44px rgba(110, 60, 50, 0.24) !important;
+}
+
+/* Hero responsive overrides */
+.hero-title-1,
+.hero-title-2 {
+  font-size: 8.25vw;
+  left: 2.6vw;
+  top: calc(74px + 3.2vh);
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.hero-title-3 {
+  font-size: 9.6vw;
+  left: 7vw;
+  top: calc(74px + 5vh);
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.stays-section {
+  margin-top: -17vh;
+  padding-left: clamp(20px, 9.5vw, 170px);
+  padding-right: clamp(20px, 9.5vw, 170px);
+}
+
+.search-bar-wrap {
+  bottom: calc(20vh + 2px);
+}
+
+@media (max-width: 640px) {
+  .hero-title-1,
+  .hero-title-2,
+  .hero-title-3 {
+    font-size: 13.5vw;
+    max-width: 80vw;
+    white-space: normal;
+    left: 5vw;
+    line-height: 0.96;
+  }
+
+  .stays-section {
+    margin-top: -8vh;
+  }
+
+  .search-bar-wrap {
+    bottom: 16vh;
+  }
+}
